@@ -21,6 +21,7 @@ header-includes:
 # git branch -M main
 # git remote add origin https://github.com/SeiroIto/Miscellaneous.git
 # git push -u origin main
+# git checkout gh-pages
 ---
 class: inverse, middle, center
 ```{r setting, eval = T, cache = T, warning = F, message = F, echo = F}
