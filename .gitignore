@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+#### This is gitignore for miscellaneous
+/QuartoFiles/**/libs
+=======
+#### This is gitignore for miscellaneous repo
+#### This is for quarto libs folders.
+/**/libs
+>>>>>>> b004b8b85ac1ebaee2f994145585eb48fe4b160f
