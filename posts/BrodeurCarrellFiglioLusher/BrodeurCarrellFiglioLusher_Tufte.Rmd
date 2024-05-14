@@ -477,6 +477,7 @@ Aside: HARKing (modifying original hypothesis, Hypothesize After Results are Kno
 # 感想
 
 * $p$-hackingの原因を「著者」と雑誌に切り分け、「著者」に問題ありと示した功績は大きい。  
+* 結論がすっきりしない。BunchingとCaliperの不整合。  
 * タイトルは適切? 雑誌が悪化させていないと示した=$p$ hackingとpublication biasをunpackした、のかなぁ...forward lookingに忖度して$p$ hackする場合を分離できないから、両者を切り分ける方法論を示していないのでは。  
 * レビュー過程で悪化こそしないけど、雑誌はハックされた論文とされてない論文を等しく扱っているので、$p$ hackingを追認している。  
 * サーベイによれば8割の著者が忖度して(うち半分は$p$ hackして)いるので、雑誌がレビュー過程を公開して誤解を解くべきでは。  
