@@ -423,7 +423,7 @@ SS is not correlated with the differences between initial and final drafts ([Tab
 
 ## Accepted vs. rejected drafts
 
-SS is not associated with acceptance/rejection (Table 7)  
+SS is not associated with acceptance/rejection (Table 7)^[This is very, very surprising. Why do we see so few non-SS estimates in the main tables? Is it my bias that my attention is placed mostly on SS estimates?]  
 
 ```{r Tab7, echo = F, fig.width = 8}
 knitr::include_graphics(paste0(path, "Tab7.jpg"))
