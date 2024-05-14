@@ -175,7 +175,7 @@ But this is a too general argument when Elliot, Kudrin, and Wuthrich (2022) deri
 
 ## Contribution of this paper
 
-This paper uses both initial submission ($p$ hacking) and published ($p$ hacking and publication bias) versions.  
+This paper uses both initial submission ($p$ hacking) and published ($p$ hacking and publication bias) versions. Doing so with precise information of the peer review process.  
 
 * The peer review process does not exacerbate biases/bunching.  
 * Bunching is due mostly to $p$ hacking.  
@@ -224,7 +224,7 @@ Using only published papers cannot distinguish $p$-hacking from a publication bi
 
 ## Design
 
-1. Tests of $p$ hacking: Test restriction on curvature, levels, continuity of density of $p$ curve to detect $p$ hacking.  
+1. Tests of $p$ hacking: Test restrictions on curvature, levels, continuity of $p$ curve to detect $p$ hacking.  
 1. Tests of publication bias: Use each test stats as an observation and link with editorial decisions in a regression.  
 1. External validity (showing microecon-wide relevance) of finding; Use an anonymous survey to authors to reveal QRPs, relate them to submited journals.  
 
@@ -390,7 +390,7 @@ I will try to point what authors write. Note:
   * 1% level: $p>50\%$ (Table A2).  
   * Derounded tests (using resampled data from uniform CIs) give large $p$ values except for CS2B.  
 * Caliper tests for statistical significance:  
-  * DID, IV, less so for RCT, are more correlated than RDD ([Table 3](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=13)).  
+  * DID, IV, less so for RCT, are more correlated with SS than RDD ([Table 3](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=13)).  
   * Author characteristics are not correlated.  
 
 ## Desk rejections
