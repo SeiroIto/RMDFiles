@@ -15,6 +15,7 @@ header-includes:
 bibliography: c:/seiro/settings/Tex/seiro.bib
 link-citations: yes
 # path <- "c:/seiro/docs/IDE/memo/saizensen/BrodeurCarrellFiglioLusher/"; rmarkdown::render(paste0(path, "BrodeurCarrellFiglioLusher_Tufte.Rmd"))
+# git pull origin gh-pages
 ---
 ```{css, echo=FALSE}
 .SeiroBenign {
@@ -29,6 +30,21 @@ link-citations: yes
   font-family: Noto S	ans;
   /* border: 1px solid yellow; */
   /* font-weight: bold; */
+}
+.darkgrayout {
+  background-color: #353839;
+  border: 0px solid #353839;
+  color: white;
+}
+.grayout {
+  background-color: slategray;
+  border: 0px solid slategray;
+  color: white;
+}
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid red;
+  font-weight: bold;
 }
 ```
 
@@ -88,14 +104,16 @@ knitr::include_graphics(paste0(path, "Fig2C.jpg"))
 ```{r figA1a-margin, echo = F, fig.margin=TRUE, out.width = "100%"}
 knitr::include_graphics(paste0(path, "FigA1a.jpg"))
 ```
-* $P$-hacking can be detected using a straightforward idea: $P$ curves should be non-increasing (or flat).  
+* Argument: Published version - initial submission = effects of peer review = publication biases.  
+* $P$-hacking can be detected using a straightforward idea: $P$ curves should be non-increasing.  
+* Statistical theory and tests of non-increasinness are developed in @ElliotKudrinWuthrich2022.  
 * In a random sample of test statistics in papers submitted to JHR in 2013-2018, bunching is found at $p$ values of 1, 5, 10\%.  
-* A caveat: Bunching may be due to rounding errors of $z=2$: Heap of stats at $(1.96, 1.96+.04]$ relative to $[1.96-.04, 1.96]$ [@KranzPutz2022].  
-* "Statistically significant" results are likely to be:  
+* Bunching remains after dealing with coarse rounding problem (at $z=2$, etc.).  
+* "Statistically significant" results will likely be:  
   * Desk rejected (10% level).  
   * Rated highly by referees (5% level).  
 * By canceling out, accepted and rejected papers show similar $p$ curves.  
-* Publication biases, if any, do not alter $p$ curves.  
+* Only author's hacking: Peer review process does not alter $p$ curves.  
 * Author behavior of not submitting papers with large $p$ values causes what remains of the bunching.  
 <!--* Caliper tests can test correlations between "statistical significance" and various editorial decisions.  -->
 
@@ -106,24 +124,25 @@ knitr::include_graphics(paste0(path, "FigA1a.jpg"))
 ## $P$-hacking
 
 **Definition**  
-Knowingly or otherwise, authors' actions that produce "more favorable" $p$-values ["bias" of @Ioannidis2005].^[There are some variations in definitions in the literature. This paper uses a publication bias as acts of editors and reviewers, $p$-hacking as acts of authors. ] ^[After seeing the estimated results.] ^[Andrew Gelman [dislikes the term "*p*-hacking"](https://statmodeling.stat.columbia.edu/2017/05/10/p-hacking-intention-cheat-effect/), because sometimes authors unintentionally and honestily choose to pick a particular estimation that results in cherry picking. Intentions do not matter and "hacking" sounds as if all it counts is intentions. And [the authors may respond that they are being honest which clouds the problem](https://statmodeling.stat.columbia.edu/2023/09/23/again-why-i-dont-like-to-talk-so-much-about-p-hacking/). He prefers "forking-paths". ] ^[Gelman says the problem is in selective reporting or in [*p*, not hacking *per se*](https://statmodeling.stat.columbia.edu/2021/09/30/the-problem-with-p-hacking-is-not-the-hacking-its-the-p/). IOW you can "hack" if you show everything you did. $\dots$ which gives rise to multiple testing and an increase in $p$ values. Problem solved. ] 
+Knowingly or otherwise, authors' actions that produce "more favorable" $p$-values ["bias" of @Ioannidis2005].^[There are some variations in definitions in the literature. This paper uses a publication bias as acts of editors and reviewers, $p$-hacking as acts of authors. ] ^[Andrew Gelman [dislikes the term "*p*-hacking"](https://statmodeling.stat.columbia.edu/2017/05/10/p-hacking-intention-cheat-effect/), because sometimes authors unintentionally and honestily choose to pick a particular estimation that results in cherry picking. Intentions do not matter and "hacking" sounds as if all it counts is intentions. And [the authors may respond that they are being honest which clouds the problem](https://statmodeling.stat.columbia.edu/2023/09/23/again-why-i-dont-like-to-talk-so-much-about-p-hacking/). He prefers "forking-paths". ] ^[Gelman says the problem is in selective reporting or in [*p*, not hacking *per se*](https://statmodeling.stat.columbia.edu/2021/09/30/the-problem-with-p-hacking-is-not-the-hacking-its-the-p/). IOW you can "hack" if you show everything you did. $\dots$ which gives rise to multiple testing and an increase in $p$ values. Problem solved. ] 
 
 * Collecting data or run more experiments.  
 * Tinkering with specifications.  
 * Imposing sample restrictions.  
 * Shelving a study if initial results are unpromising.  
+* <span class = "grayout">Change the <u>h</u>ypothesis <u>a</u>fter <u>r</u>esults are <u>k</u>nown. HARKing.</span>  
 
 **Motivations**  
-Presence or a belief of a publication bias (that only papers with low $p$-values get published).  
+Presence or a belief of a publication bias (that only papers with low $p$-values get published).^[Another motivation: A weakly founded hypothesis.]  
 
 **Effects**  
 Without null effects, published research leads to biased estimates and misleading confidence sets (away from zero).  
 
-## $P$ curve is flat
+## $P$ curve is flat, some say
 
 $P$ curve $:=$ pdf of $p$ values from all studies.  
 
-<details><summary><span style="color: blue;">Click here to see why it is flat.</span></summary>
+<details><summary><span style="color: blue;">Click here to see why [as argued by @ChristensenMiguel2018](https://pubs.aeaweb.org/doi/pdfplus/10.1257/jel.20171350#page=8). </span></summary>
 
 A $p$ curve is uniformly distributed under the null of no effect and no $p$-hacking.  
 
@@ -133,6 +152,8 @@ A $p$ curve is uniformly distributed under the null of no effect and no $p$-hack
 * Any additional one percentage point size difference happens at a probability of 1%.  
 * So its density is uniform.  
 
+But this is a too general argument when Elliot, Kudrin, and Wuthrich (2022) derived the sufficient conditions for non-increasingness...
+
 </details>
 
 ## Existing literature
@@ -140,21 +161,29 @@ A $p$ curve is uniformly distributed under the null of no effect and no $p$-hack
 ::: {.proposition #Lit1 name="Empirical distribution of test statistics"}
 **Empirical distribution of test statistics**  
 
-* $P$ curves constructed from published manuscripts show bunching at 1, 5, 10% [@Brodeuretal2016; @GerberMalhotra2008a; @GerberMalhotra2008b; @Vivalt2019].  
+* $P$ curves constructed from published manuscripts show bunching at 1, 5, 10% [@Brodeuretal2016; @GerberMalhotra2008a; @GerberMalhotra2008b; less so for recent RCTs found in @Vivalt2019].  
 * $P$ curves constructed from published and working paper manuscripts show similar bunching at 1, 5, 10\%, so R\&R does not mitigate the problem [@Brodeuretal2020].  
+:::  
+
+::: {.proposition #Lit2 name="Theoretical properites of test statistics"}
+**Theoretical properites of test statistics**  
+
+* Sufficient conditions for non-increasing $p$ curve: A sort of monotone likelihood ratio property (Elliot, Kudrin, and Wuthrich, 2022).^[$f'_{h}(x)f(x)\geqslant f'(x)_{h}f(x)$ where $f_{h}$ is a density of test statistic under the alternative and $f$ is a density of test statistic under the null $h=0$.]   
+* Tests (restrictions) derived from non-increasingness of $p$ curve: Non-increasing frequencies, upper bounds of frequency shown by Elliot, Kudrin, and Wuthrich (2022) can use moment inequality tests of @CoxShi2022, concavity of distribution function can use distance tests of @CarolanTebbs2005, continuity in density can use RDD test of @CattaneoJanssonMa2020.  
+* Related work:  @AndrewsKasy2019 provide estimation of conditional probability of publication to correct for publication bias in estimating effect size.  
 :::  
 
 ## Contribution of this paper
 
-This paper uses both initial submission ($p$ hacking) and published ($p$ hacking and publication/ref-editor bias) versions.  
+This paper uses both initial submission ($p$ hacking) and published ($p$ hacking and publication bias) versions.  
 
-* Initial submission vs. later version can show if the peer review process exacerbates biases.  
-* It does not. Mostly $p$ hacking.  
+* The peer review process does not exacerbate biases/bunching.  
+* Bunching is due mostly to $p$ hacking.  
 
 Using only published papers cannot distinguish $p$-hacking from a publication bias. This limits the use of interventions.  
 
 * $P$-hacking: Pre-registrations of RCTs, pre-analysis plan for empirical work.  
-* Publication biases: Pre-results review, bias-corrected estimators and CIs [@AndrewsKasy2019].  
+* Publication biases: Pre-results review, bias-corrected estimators and CIs.  
 
 
 ```{marginfigure}
@@ -187,38 +216,38 @@ Using only published papers cannot distinguish $p$-hacking from a publication bi
 * A year-phase stratified random sample: 250/desk rejection, 250/reviewer rejection, 223/publication+initial submission.  
 * Keep only papers using either of RCT, DID, IV, RDD. 705 papers.  
 * 28 editors: 171 DR, 210 RR, 162 Pub.  
-* Use only main results, only estimates of main variate/covariates of interest. 20,206 test stats.^[Papers with more "main results" are overrepresented. One should weight with the estimates per paper. ]  
+* Use only main results, only estimates of main variate/covariates of interest. 20,206 test stats.^[Papers with more "main results" are overrepresented. Authors use weights in Caliper tests but not in bunching tests. ]  
 * Anonymous survey: Sent emails to 561 authors, 143 (`r round((143/563)*100, 2)` %) complied.  
 
 
 # Empirical strategy
 
-@ElliotKudrinWuthrich2022 provide formal conditions for non-increasingness of the $p$-curve and tests. Related work: Andrews and Kasy (2019) provide estimation of conditional probability of publication to correct for publication bias in estimating effect size.  
+## Design
 
+1. Tests of $p$ hacking: Test restriction on curvature, levels, continuity of density of $p$ curve to detect $p$ hacking.  
+1. Tests of publication bias: Use each test stats as an observation and link with editorial decisions in a regression.  
+1. External validity (showing microecon-wide relevance) of finding; Use an anonymous survey to authors to reveal QRPs, relate them to submited journals.  
 
-## Parametric tests using the null of no "statistical significance" (with covariates)
+Second may be problematic due to omitted variables.  
 
-
-### Caliper tests
-
-A logit of statistical significance on editorial decisions [@GerberMalhotra2008b; which traces the idea back to @Tufte1985; also see @GerberMalhotra2008a for an early application]. ^[Why not run regressions at the paper level, the level where the decisions is made: Decision = $c_{1}\times$NumOfSignificant$_{.05}+c_{2}\times$NumOfSignificant$_{.10}+\bfc'\bfx+u$? Of course, it is just a correlation so either can be fine...]
-\[
-\mathrm{Significant} = a*\mathrm{Editorial Decision}+\bfb'\bfx+e.
-\]
-Significant = 0 if test stat does not reach the threshold, 1 if it surpasses it. Done for each 1, 5, 10 % levels. E.g., for 5% level, with wide and narrow bandwidths for $h$: 
-
-* Coded as 0 if $z\in[1.96-h, 1.96]$.  
-* Coded as 1 if $z\in(1.96, 1.96+h]$.  
-
-If SS at 5% is associated with rejections, what does it mean?  
-
-* It means the peer review rejects $p$ hacked papers more, on average.  
-* If the review blindly/randomly accepts/rejects, there should be no correlation with Significant.  
-* The peer review detects or questions the $p$ hacked papers more.  
 
 
 ## Nonparametric tests using the null of flat $p$ curve
 
+
+### Fisher's $\chi^{2}$ test (omitted in this paper because it always gives $p$ values of 1)
+
+Used by @Simonsohn2014. Fisher showed that for $p_{1}, \dots, p_{m}$, $s=-2*\sum\limits_{k=1}^{m}\ln p_{k}\sim \chi^{2}(2m)$. 
+
+<details><summary><span style="color: blue;">Click here to see how to use the Fisher's test. </span></summary>
+
+Here, each $p$ is just data and we need the $p$ values of each data. For continuous tests at 5% level, under the null of uniformly distributed test statistics in $U[0, .05]$, one can get $p$ values of each test statistics by dividing with .05.^[For example, when considering 5% significance, a test statistic ($p$ value) less than .01 can be found with the probability of 20%, so divide .01 with .05 to get .2. For a test statistic less than .02 can be found with the probability of 40%, so divide .02 with .05.] 
+So transform each $p$ values with $p_{k}/\alpha$ where $\alpha$ is the level of significance, get $s$ and $1-\chi^{2}(2k$) gives the $p$ value. 
+
+</details>
+
+
+## Nonparametric tests using the null of non-increasing $p$ curve
 
 ### Binomial tests
 
@@ -226,7 +255,7 @@ Compare the number of tests for $p\in[.040, .045]$ vs. $p\in(.045, .050]$. Under
 \[
 \# \mbox{ in }\underbrace{[.040, .045]}_{\mathrm{farther \ from \ cutoff}} \geqslant \# \mbox{ in }\underbrace{(.045, .050].}_{\mathrm{closer \ to \ cutoff}}
 \]
-Binomial test examines the null of equal or smaller probability in $(.045, .050]$ [@Simonsohn2014]. We can compute the $p$ value given the data (sample size $n$ with $k$ obs in this region) against the null $\pi=.5$ using the binomial distribution formula.^[
+Binomial test examines the null of equal or smaller probability in $(.045, .050]$ (also from Simonsohn, Nelson, and Simmons 2014). We can compute the $p$ value given the data (sample size $n$ with $k$ obs in this region) against the null $\pi=.5$ using the binomial distribution formula.^[
 $$p=\sum_{i=0}^{k}Pr(X=i)=\sum_{i=0}^{k}\left(
 \begin{array}{c}
 n\\ i
@@ -234,23 +263,9 @@ n\\ i
 \right)(1-.5)^{n-i}.$$
 ] 
 
-### Fisher's $\chi^{2}$ test (omitted in this paper because it always gives $p$ values of 1)
-
-Also from Simonsohn, Nelson, and Simmons (2014). Fisher showed that for $p_{1}, \dots, p_{m}$, $s=-2*\sum\limits_{k=1}^{m}\ln p_{k}\sim \chi^{2}(2m)$. 
-
-<details><summary><span style="color: blue;">Click here to see how to use the Fisher's test. </span></summary>
-
-Here, each $p$ is just data and we need the $p$ values of each data. For continuous tests at 5% level, under the null of uniformly distributed test statistics in $U[0, .05]$, one can get $p$ values of each test statistics by dividing with .05.^[For example, when considering 5% significance, a test statistic ($p$ value) less than .01 can be found with the probability of 20%, so divide .01 with .05 to get .2. For a test statistic less than .02 can be found with the probability of 40%, so divide .02 with .05.] 
-So transform each $p$ values with $p_{k}/\alpha$ where $\alpha$ is the level of significance, get $s$ and 1-chisq($s, 2k$) gives the $p$ value. 
-
-</details>
-
-
-## Nonparametric tests using the null of non-increasing $p$ curve
-
 ### Conditional moment inequality tests (CS1, CS2B histogram based tests) 
 
-Divide into bins and test non-increasingness of $\Delta$frequency$\leqslant 0$ using conditional $\chi^{2}$ tests of @CoxShi2022.
+Divide into bins and test non-increasingness of $\Delta$frequency$\leqslant 0$ using conditional $\chi^{2}$ tests of Cox and Shi (2022).
 
 ### LCM test based on concavity of distribution function 
 
@@ -276,7 +291,32 @@ Test empirical distance between points on $p$ curve and compare against its leas
 
 ### Discontinuity test
 
-This is a test of RDD by @CattaneoJanssonMa2020. It tests discontinuity (jumps) in density. Tests for 1, 5, and 10%.  
+This is a test of RDD by Cattaneo, Jansson, and Ma (2020). It tests discontinuity (jumps) in density. Tests for 1, 5, and 10%.  
+
+## Parametric tests using the null of no "statistical significance" (with covariates)
+
+
+### Caliper tests
+
+A logit of statistical significance on editorial decisions [@GerberMalhotra2008b which traces the idea back to @Tufte1985; also see @GerberMalhotra2008a].^[If Signif at 10% is negatively correlated with Signif at 5%, and if Reject is negatively correlated with Signif at 5%, the estimate of Reject will be upwardly biased for Signif at 10%. ] ^[Why not run regressions at the paper level, the level where the decisions is made: Decision = $c_{1}\times$NumOfSignificant$_{.05}+c_{2}\times$NumOfSignificant$_{.10}+\bfc'\bfx+u$? This will take care of the omitted variable bias arising from separating single test stats of a paper. ]
+\[
+\mathrm{Significant} = a*\mathrm{Editorial Decision}+\bfb'\bfx+e.
+\]
+Significant = 0 if test stat does not reach the threshold, 1 if it surpasses it. Done for each 1, 5, 10 % levels. E.g., for 5% level, with wide and narrow bandwidths for $h$: 
+
+* Coded as 0 if $z\in[1.96-h, 1.96]$.  
+* Coded as 1 if $z\in(1.96, 1.96+h]$.  
+
+If SS at P% is associated with rejections, what does it mean?  
+
+* *Given the bunching at P%,* it means the peer review rejects $p$ hacked papers more, on average.  
+* If the review blindly/randomly accepts/rejects, there should be no correlation with Significant.  
+* The peer review detects or questions the $p$ hacked papers more.  
+* Or, equivalently, the peer review rejects Siginificant = 1 papers more.  
+
+The last statement is true but sounds weird, because the peer review does not accept the null results more.^[This is just my gut feeling. But I think I am correct.]  
+
+* Once other test stats in the same paper are taken into account, a positive correlation of SS and rejection can become weaker.  
 
 ## Other issues {.tabset .tabset-pills}
 
@@ -286,7 +326,7 @@ Results do not change after dealing with the rounding problem.
 
 <details><summary><span style="color: blue;">Click here to see how to deal with rounding problem.</span></summary>
 
-There are many $z=2$ (exactly 2) cases.^[Many cases of 3, 4, 5 as well. See Figure A1 (a).] This is called the "rounding errors" and is shown to inflate bunching (Kranz and Putz, 2022).^[Presumably, it may have been 1.999 or 2.001 and the stats may have been reported after rounding at the 3rd digit? Hard to imagine why we should have so many 1.999 or 2.001, though.] 
+There are many $z=2$ (exactly 2) cases.^[Many cases of 3, 4, 5 as well. See Figure A1 (a).] This is called the "rounding errors" and is shown to inflate bunching [@KranzPutz2022].^[Presumably, it may have been 1.999 or 2.001 and the stats may have been reported after rounding at the 3rd digit? Hard to imagine why we should have so many 1.999 or 2.001, though.] 
 
 To deal with rounding errors, authors incoporate two methods:^[For 1., one can get a CI for SD but not for SE because, in a frequentist world, SE is a fixed population parameter that measures variability of stat (mean) across samples. Here, $\widehat{SE}=\frac{\widehat{SD}}{\sqrt{N}}$ so authors may be dividing CI bounds with $\sqrt{N}$? I don't know...] ^[To get a 95% CI for SD, one uses the relationship $(n−1)\frac{s^{2}}{\sigma^{2}}\sim \chi^{2}(n−1)$ or the sum of standard normal squared errors is distributed as $\chi^{2}(dof)$, to find $L, U$ such that $.95=P(L\leqslant (n−1)\frac{s^{2}}{\sigma^{2}}\leqslant U)$ where $L, U$, respectively, cut probability 0.025 from the lower and upper tails of (the asymmetrical) distribution $\chi^{2}(n−1)$. $P(L\leqslant (n−1)\frac{s^{2}}{\sigma^{2}}\leqslant U)=P\left(\frac{(n−1)s^{2}}{U}\leqslant \sigma^{2}\leqslant \frac{(n−1)s^{2}}{L}\right)$, so CI is $\left(\frac{(n−1)s^{2}}{U}, \frac{(n−1)s^{2}}{L}\right)$. Use qchisq(c(.025, .975), $N$) to get $L, U$. ] ^[Drop significand (siginificant digits written as an integer) of $s$ less than 37. E.g., under the three significant digits, the significand of $s=.012$ is 12. Significand varies by the choice of significant digits: Under the notation of $s=12\times 10^{-3}$, significand is 12, while under the notation of $s=1.2\times 10^{-2}$, significand is 1.2. ] ^[A smaller significand gives a larger and more coarse value of $z=\frac{\hat{b}}{s}$ (hence $p$). So setting a lowerbound amounts to excluding coarsely rounded $z$ values. ]  
 
@@ -307,7 +347,7 @@ Just looking at what these tests do, we can imagine:
 
 * Underpowered: Fisher, LCM, discontinuity.  
 * Can be OK: Binomial, CS1, CS2B, Caliper.  
-* Bear in mind: Caliper is global and parametric, others are local and nonparametric.  
+* Caliper forces to be local (by applying a window) and is parametric, others are local and nonparametric.  
 
 ## {-}
 
@@ -328,14 +368,27 @@ knitr::include_graphics(paste0(path, "Tab1.jpg"))
 
 # Main results
 
+## Before we go into details
+
+Two difficulties in summarising the results.  
+
+1. Results of bunching tests ([Table 2](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=11)) and Caliper tests (all other tables) are inconsistent.  
+1. Binomial at 5% and CS2B tests almost always reject no bunching at any decision phase (near zero $p$ values). These tests are undersized?  
+
+I will try to point what authors write. Note:
+
+* Authors tend to rely on Caliper test results in the main text.  
+* Omitted variable biases for Caliper tests.  
+
+
 ## Initial submissions
 
-* Non-increasingness has $p<1\%$ for CS1, CS2B, LCM tests ([Table 2](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=11)).  
+* Non-increasingness has $p<1\%$ for CS1, CS2B, LCM tests ([Table 2](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=11)). No tests using derounding method of @KranzPutz2021.^[Authors use KP method only for regressions (Caliper tests). No reasons given. Given that the $p$ values under KP method get large for bunching, this omission is inexplicable.] ^[At the same time, KP method can take away the bulk of $p$ hacking. If authors choose to round values coarsely to get $z=2$, this is $p$ hacking.]  
 * Binomial and discontinuity tests for bunching:  
   * 10% level: $p<1\%$.  
   * 5% level: Mixed results.  
   * 1% level: $p>50\%$ (Table A2).  
-  * Derounded tests (using resampled data from uniform CIs) give larger $p$ values.  
+  * Derounded tests (using resampled data from uniform CIs) give large $p$ values except for CS2B.  
 * Caliper tests for statistical significance:  
   * DID, IV, less so for RCT, are more correlated than RDD ([Table 3](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=13)).  
   * Author characteristics are not correlated.  
@@ -348,23 +401,23 @@ Stat signif ("SS") is positively correlated with desk rejection at 10% level (Ta
 knitr::include_graphics(paste0(path, "Tab4.jpg"))
 ```
 
-* Given desk rejected papers end up with fewer ex post citations [@Cardetal2019], desk rejection could have filtered out false positive results of 10% level.  
+* Given desk rejected papers end up with fewer ex post citations [@Cardetal2019], desk rejection might have filtered out false positive results of 10% level.^[A bit of leap here. It does not have to be filtering of false positives. If most editors reject p<10% (relative to p>10%), the paper will hardly be published and becomes a "bad" paper with fewer ex post citations,  or a "false positive." ]  
+* Had the desk rejection been a function of $p>.1$, the estimate $\hat{a}$ in Panel A of Table 4 will be negative. Authors suggest the co-editors are showing some values by picking up valuable information (p.2989).  
 
 
+## Reviewer recommendations
 
-## Reviewer rejections
-
-SS gets reviewer rejected more.^["The mass of p-values around significance thresholds becomes more pronounced as we move from the first figure (rejections) to the third figure (strong positive recommendations)." p.2990. Cannot see it in [Figure 4](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=18)...] 
+SS gets more reviewer acceptance^[A typo in the Table 5 header.]^["The mass of p-values around significance thresholds becomes more pronounced as we move from the first figure (rejections) to the third figure (strong positive recommendations)." p.2990. Cannot see it in [Figure 4](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=18)...] at 5% level for both weak and strong recommendations (Table 5), although not so small $p$ values.^["(A) weakly positive or strongly positive review were more likely to be marginally significant at the 10% level than negative reviews (though these estimates are not statistically significant)." p.2990.] ^["(W)e include a vector of reviewer level covariates to account for potential correlation in (a) the assignment of manuscripts with marginally significant results to (b) reviewers with a higher propensity to review manuscripts positively. We find little difference in our estimates between columns (2) and (3), suggesting editors do not choose reviewers based on both the paper’s marginal significance and the reviewers propensity to review papers positively or negatively." p.2990.] 
 
 ```{r Tab5, echo = F, fig.width = 8}
 knitr::include_graphics(paste0(path, "Tab5.jpg"))
 ```
 
-* Weakly at 5% level for both weak and strong recommendations (Table 5).^[$P>.05$ get reviewer rejected less... surprising.] ^["(A) weakly positive or strongly positive review were more likely to be marginally significant at the 10% level than negative reviews (though these estimates are not statistically significant)." p.2990.] ^["(W)e include a vector of reviewer level covariates to account for potential correlation in (a) the assignment of manuscripts with marginally significant results to (b) reviewers with a higher propensity to review manuscripts positively. We find little difference in our estimates between columns (2) and (3), suggesting editors do not choose reviewers based on both the paper’s marginal significance and the reviewers propensity to review papers positively or negatively." p.2990.]  
+*  
 
 ## Initial vs. final drafts of accepted papers
 
-SS is not correlated with the differences between initial and final drafts ([Table 6](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=20)).^[Authors say this is unsurprising because reviews mostly comment on robustness or heterogeneity tables which this paper does not process. ] 
+SS is not correlated with the differences between initial and final drafts ([Table 6](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=20)).^[Authors say this is unsurprising because reviews mostly comment on robustness or heterogeneity tables which this paper does not process (footnote 26). ] 
 
 * Positive point estimates with large $p$ values on Initial Submission. Peer review processes do not affect bunching.  
 
@@ -383,14 +436,14 @@ knitr::include_graphics(paste0(path, "Tab7.jpg"))
 If rejected, 5% SS is more likely to be never published ([Table 8](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=24))  
 
 * So there is no graveyard of working papers with null results.  
-* ["'bad' papers tend to $p$-hack more."](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=22)  
+* ["'bad' papers tend to $p$-hack more"](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20210795#page=22) where "bad"=never published.  
 * If you $p$-hack (and JHR rejects your paper), it indicates the likeliness of never being published. Or, indicates the weakness of your estimation and peer review processes can see it, on average.   
 
 
 ## Robustness checks
 
 * De-rounding (Table A7, A10, A13, A16, A18).  
-* Krunz and Putz (2022)'s method against coarse rounding.  
+* Krunz and Putz (2022)'s method against coarse rounding for Caliper tests.  
 * Inclusion of "ambiguous" test stats (Table A20-A24).  
 * Restrict to the first main table of each paper (Table A25-A29).  
 * Wider bandwidth (Table A30-A34).  
@@ -403,9 +456,9 @@ knitr::include_graphics(paste0(path, "Tab9.jpg"))
 
 * Behaviors do not change by the journal choice.  
 * 30% stopped research if null results.  
-* 81% think "statistical significance" is important for editor's decision.  
-* 45%-46% reported only a subset of results.  
-* 24%-26% modified null hypoethesis, seleceted covariates, expand sample/conduct more RCTs.  
+* <span style="color: red;">81% think "statistical significance" is important for editor's decision.</span>  
+* <span style="color: red;">45%-46%</span> reported only a subset of results.  
+* <span style="color: red;">24%-26%</span> modified null hypoethesis, seleceted covariates, expand sample/conduct more RCTs.  
 * 17% recategorized/excluded data.  
 
 A social desirability bias may induce underreporting of these behavior, so questionable research practices (QRPs) may be more prevalent. 
@@ -423,16 +476,18 @@ Aside: HARKing (modifying original hypothesis, Hypothesize After Results are Kno
 
 # 感想
 
-* $p$-hackingの原因を著者と雑誌に切り分け、著者に問題ありと示した功績は大きい。  
+* $p$-hackingの原因を「著者」と雑誌に切り分け、「著者」に問題ありと示した功績は大きい。  
 * タイトルは適切? 雑誌が悪化させていないと示した=$p$ hackingとpublication biasをunpackした、のかなぁ...forward lookingに忖度して$p$ hackする場合を分離できないから、両者を切り分ける方法論を示していないのでは。  
 * レビュー過程で悪化こそしないけど、雑誌はハックされた論文とされてない論文を等しく扱っているので、$p$ hackingを追認している。  
-* サーベイによれば著者が忖度して$p$ hackしているので、雑誌がレビュー過程を公開して誤解を解くべきでは。  
-* 検定方法のアイディアに感心した。  
+* サーベイによれば8割の著者が忖度して(うち半分は$p$ hackして)いるので、雑誌がレビュー過程を公開して誤解を解くべきでは。  
 * De-roundingするとbunchingがなくなるのに、editorial decisionと "statistical significance" の相関が変わらない...1が減って0が増えたが、それまでの関係をほぼ保つような関係だった...のは不可能ではない。しかし、すべての意思決定段階でそうとは驚き。  
-* 今まで持っていた疑問への答えがデータで開示された。やっぱりね、20%-40%くらいの人たちはやっているのか...  
+* 今まで持っていた疑問への答えがデータで開示された。20%-40%くらいの人たちはQRPしているのか...  
+* AERのように星を廃止すればbunchingはなくなりそう。すると、$p$ hackingの有無をbunchingで検定できなくなるが、上限(CS2B)では検定できる。でも、テストはundersizedかもしれない。  
+* 対策への言及が少ない。経済理論・政策は考察対象外だから。なぜ$p$ hackするのか。Publication biasがなければ、意図的な$p$ hackingはかなりなくなるのでは?  
+* 検定方法のアイディアに感心した。  
 * ジャーナルの編集委員会の内幕を少し垣間見ることができて面白かった。  
 <!--* 気持ちとしてやりづらいことをきっちりやっている論文。  -->
-* Desk rejectionが$p$-valueだけで判断していなさそうなのは嬉しいが、(エディタよりも相対的に若くてボランティア的な)レフェリーが$p$-valueを頼りに判断していそうなのが悲しい。  
+* Desk rejectionが$p$-valueだけで判断していなさそう(?)なのは嬉しいが、(エディタよりも相対的に若くてボランティア的な)レフェリーが$p$-valueを頼りに判断していそうなのが悲しい。  
 * 書かれている文章に同意しづらい箇所が相対的に多い。$p$-value 10%くらいで「...である」と書くoverstatement、図からにわかに判断できない傾向にobviousと表現することが散見された。  
 
 
