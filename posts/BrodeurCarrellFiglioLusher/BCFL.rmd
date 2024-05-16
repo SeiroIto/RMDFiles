@@ -1,0 +1,58 @@
+---
+title: "先生、それPハクです: うむ、お金で解決しよう"
+author: "伊藤成朗"
+date: "`r format(Sys.time(), '%Y年%m月%d日 %R')`"
+header-includes:
+- \usepackage{seiro_minimal}
+output: 
+  html_document:
+#  word_document:
+#  html_document
+#    citation_package: natbib
+# tufte::tufte_handout: default
+    # tufte_features: ["fonts", "background", "italics"]
+bibliography: c:/seiro/settings/Tex/seiro.bib
+link-citations: yes
+# path <- "c:/seiro/docs/IDE/memo/saizensen/BrodeurCarrellFiglioLusher/"; rmarkdown::render(paste0(path, "BCFL.Rmd"))
+---
+```{css, echo=FALSE}
+.SeiroBenign {
+  background-color: #FFEBCD;
+  padding: 0.5em; /*文字まわり（上下左右）の余白*/
+  /* border: 1px solid yellow; */
+  /* font-weight: bold; */
+}
+.SeiroLightGreen {
+  background-color: #D0F0C0; /* Tea green */
+  padding: 0.5em; /*文字まわり（上下左右）の余白*/
+  font-family: Noto S	ans;
+  /* border: 1px solid yellow; */
+  /* font-weight: bold; */
+}
+/* Define a margin before hX (header level X) element */
+h1  {
+  margin-top: 3ex;
+  margin-bottom: 3ex;
+  /* background: #c2edff; */ /*背景色*/
+  padding: 0.5em;/*文字まわり（上下左右）の余白*/
+}
+h2  {
+  margin-top: 2ex;
+  margin-bottom: 2ex;
+  padding: 0.5em;/*文字周りの余白*/
+  color: #010101;/*文字色*/
+  /* background: #eaf3ff; */ /*背景色*/
+  /* border-bottom: solid 3px #516ab6; */ /*下線*/
+}
+```
+
+<style type="text/css">
+  body, td{
+  font-size: 16pt;
+}
+</style>
+
+
+```{r, child="BCFL_text.Rmd"}
+```
+
