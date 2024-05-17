@@ -4,12 +4,17 @@ author: "伊藤成朗"
 date: "`r format(Sys.time(), '%Y年%m月%d日 %R')`"
 header-includes:
 - \usepackage{seiro_minimal}
+- usepackage{tikz}
+- \usepackage{pgfplots}
+- \pgfplotsset{width = 7cm, compat = 1.5}
+- \pgfmathdeclarefunction{gauss}{2}{\pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}}
 output: 
-  html_document:
-#  word_document:
-#  html_document
-#    citation_package: natbib
-# tufte::tufte_handout: default
+  bookdown::html_document2:
+    fig_caption: yes
+####  word_document:
+####  html_document
+####    citation_package: natbib
+#### tufte::tufte_handout: default
     # tufte_features: ["fonts", "background", "italics"]
 bibliography: c:/seiro/settings/Tex/seiro.bib
 link-citations: yes
