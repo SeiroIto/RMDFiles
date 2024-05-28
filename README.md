@@ -14,4 +14,6 @@ See [kensyu slides](https://seiroito.github.io/RMDFiles/posts/2024/KenkyuRinriSl
 
 See [p hacking memo slides](https://seiroito.github.io/RMDFiles/posts/BrodeurCarrellFiglioLusher/BrodeurCarrellFiglioLusher_Tufte.html) and [its memo in Japanese](https://seiroito.github.io/RMDFiles/posts/BrodeurCarrellFiglioLusher/BCFL.html)
 
+See [Borusyak, Hull, Jaravel (2021) Bartik IV memo](https://seiroito.github.io/RMDFiles/posts/BorusyakHullJaravel/BorusyakHullJaravel_Tufte.html)
+
 >>>>>>> b004b8b85ac1ebaee2f994145585eb48fe4b160f
